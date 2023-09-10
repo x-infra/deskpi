@@ -1,22 +1,26 @@
+# Please check *https://github.com/DeskPi-Team/deskpi/issues/118*
+
+---
+
 # About the DeskPi Pro
 
 The DeskPi Pro is a hardware kit for converting a standard Raspberry Pi 4 from a naked SBC, with limited storage, into a mini PC complete with a power button, cooling, better ports and, via SATA then USB3, 2.5" or M.2 SSD storage.
 
 ## Currently tested operating systems that can support Deskpi scripts
-* Raspberry Pi OS(32bit) - tested 
-* RaspiOS (64bit) - tested 
+* Raspberry Pi OS(32bit) - tested
+* RaspiOS (64bit) - tested
 * Ubuntu-mate OS(32bit) - tested
-* Ubuntu OS (64bit) - tested 
-* Manjaro OS (32bit) - tested 
+* Ubuntu OS (64bit) - tested
+* Manjaro OS (32bit) - tested
 * Manjaro OS (64bit) - To be tested
 * Kali-linux-arm OS (32bit) - tested
 * Kali-linux-arm OS (64-Bit) - To be tested
-* Twister OS v2.0.2 (32bit) - tested 
+* Twister OS v2.0.2 (32bit) - tested
 * DietPi OS (64bit) - tested
-* Volumio OS Version: 2021-04-24-Pi (32bit) - tested 
+* Volumio OS Version: 2021-04-24-Pi (32bit) - tested
 * RetroPie OS (32bit) - tested
-* Windows 10 IoT - NOT Supported 
-* Windows 11 - To be tested 
+* Windows 10 IoT - NOT Supported
+* Windows 11 - To be tested
 
 ## Please Read this section carefully
 * if you are using 64bit OS, The script to control the fan is in the `rivers/c/` directory. The file suffix with `64` means `64bit`, and the one without a `32bit` executable file.
@@ -83,17 +87,17 @@ cd ~/deskpi/
 chmod +x install-raspios-64bit.sh
 sudo ./install-raspios-64bit.sh
 ```
-* Uninstall: 
+* Uninstall:
 ```
 cd ~/deskpi/
 chmod +x install-raspios-64bit.sh
 sudo ./uninstall-raspios-64bit.sh
 ```
-### For DietPi OS 64bit 
+### For DietPi OS 64bit
 * Make sure your OS can access internet and please install `git` first.
 * Execute this command in terminal:
 ```
-apt-get update && apt-get -y install git 
+apt-get update && apt-get -y install git
 ```
 * Image Download URL:  https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bullseye.7z
 ```bash
@@ -105,15 +109,15 @@ cd ~/deskpi/
 ### For Volumio OS Version: 2021-04-24-Pi
 * Image Download URL: https://updates.volumio.org/pi/volumio/2.882/volumio-2.882-2021-04-24-pi.img.zip
 * Getting Start:　https://volumio.github.io/docs/User_Manual/Quick_Start_Guide.html
-* Make sure your Volumio can access internet. 
+* Make sure your Volumio can access internet.
 * There are some steps need to do.
 ```
 sudo nano /etc/network/interface
 ```
-make sure following parameters in file `/etc/network/interface` 
+make sure following parameters in file `/etc/network/interface`
 ```
-auto wlan0 
-allow-hotplug wlan0 
+auto wlan0
+allow-hotplug wlan0
 iface wlan0 inet dhcp
 wpa-ssid "YOUR WIFI SSID"
 wpa-psk "YOUR WIFI PASSWORD"
@@ -140,7 +144,7 @@ Select `4` and press `Enter`, you would see the fan is spinning and the front US
 
 ## How to Uninstall deskpi
 ```bash
-DeskPi-uninstall 
+DeskPi-uninstall
 ```
 And then select the number against to your OS Type.
 ### For Windows IoT OS
@@ -160,15 +164,15 @@ following example:
 can specify the threshold of temperature and fan speed level according to your
 idea, once the file has been created, the program will according to the
 configuration file to setup your fan.
-* Number 7 is to enable automatic fan control by default paramaters. 
-** Default arguments:  
+* Number 7 is to enable automatic fan control by default paramaters.
+** Default arguments:
 ```
 TEMP   : Fan_SPEED_LEVEL
-<40C   : 0%  
-40~50C : 25%  
-50~65C : 50%  
-65~75C : 75%  
->75C   : 100%  
+<40C   : 0%
+40~50C : 25%
+50~65C : 50%
+65~75C : 75%
+>75C   : 100%
 ```
 ![Example](https://raw.githubusercontent.com/DeskPi-Team/deskpi/master/imgs/deskpi-config-snap.jpg)
 ** If you want to change it, just typing :
@@ -176,12 +180,12 @@ TEMP   : Fan_SPEED_LEVEL
 deskpi-config
 ```
 Select `6` and then input `45` and enter, and then input `50` means setup the fan speed level to `50%` when CPU temp is above 45 degree it has 4 level to setup.
-NOTE: 50% Speed level means you have already send `PWM50` to `/dev/ttyUSB0` port, and this port will available when you add `dtoverlay=dwc2,dr_mode=host` to `/boot/config.txt` file and `reboot` your DeskPi. 
+NOTE: 50% Speed level means you have already send `PWM50` to `/dev/ttyUSB0` port, and this port will available when you add `dtoverlay=dwc2,dr_mode=host` to `/boot/config.txt` file and `reboot` your DeskPi.
 
 ## How to boot from USB SSD/HDD?
 After initial Raspberry Pi Configuration and once you have Internet Connectivity established, Install the DeskPi Pro Utilities from `https://github.com/DeskPi-Team/deskpi.git`
-Open a Terminal / Console and run the following commands:  
-```bash 
+Open a Terminal / Console and run the following commands:
+```bash
 sudo apt update
 sudo apt full-upgrade
 sudo rpi-update
@@ -194,13 +198,13 @@ Upon reboot, open Terminal again:
 ```bash
 sudo raspi-config
 ```
-* go to Advanced Options 
+* go to Advanced Options
 * Select Boot Order, select #1 `USB Boot`, Return to Advanced Options,
 * Select Boot Loader Version, choose `Latest Version`
 * Save & exit
 ### Reboot again (to restart with new settings)
 ```bash
-sudo reboot 
+sudo reboot
 ```
 After reboot, re-open Terminal again
 ```bash
@@ -209,19 +213,19 @@ sudo -E rpi-eeprom-config --edit
 •	do not change anything, it is unnecessary
 •	press Ctrl-X to save, answer Y to overwrite file.
 ```bash
-sudo reboot    
+sudo reboot
 ```
 Now you are ready to install Raspberry-OS onto your USB Boot Device.
-You can use the Raspberry Imager from `www.raspberrypi.org` website. 
-Depending on device the new SD Card Copier can transfer the SD-Card image to the USB Device (ensure you select generate a new UUID). 
-Once your USB drive is imaged & ready to boot, shutdown your Deskpi-Pro, remove the SD-Card and power-up to boot from the USB Boot drive, once running & configured you can install your additional software and proceed as usual. 
+You can use the Raspberry Imager from `www.raspberrypi.org` website.
+Depending on device the new SD Card Copier can transfer the SD-Card image to the USB Device (ensure you select generate a new UUID).
+Once your USB drive is imaged & ready to boot, shutdown your Deskpi-Pro, remove the SD-Card and power-up to boot from the USB Boot drive, once running & configured you can install your additional software and proceed as usual.
 <br>
 * Tutorial video: https://youtu.be/wUHZb9E_WDQ  <br>
 ## How to Use IR function onboard.
 1. You need to enable `gpio-ir` function by modify `/boot/config.txt` file.
 uncomment this line if not exsit please add it.
 ```bash
-dtoverlay=gpio-ir,gpio_pin=17 
+dtoverlay=gpio-ir,gpio_pin=17
 ```
 2. Install `lirc` package:
 ```bash

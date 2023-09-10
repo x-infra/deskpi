@@ -20,7 +20,7 @@ int init_serial( char *serial_name)
 	serial_port = open(serial_name, O_RDWR);
 
 	if (serial_port < 0){
-		printf("Can not open /dev/ttyUSB0 serial port ErrorCode: %s\n", strerror(errno));
+		printf("Can not open /dev/ttyFAN0 serial port ErrorCode: %s\n", strerror(errno));
 		printf("Please check the /boot/config.txt file and add dtoverlay=dwc2, dr_mode=host and reboot RPi \n");
 	}
 
@@ -110,7 +110,7 @@ int main(void){
 	unsigned int cpu_temp=0;
 	unsigned int last_cpu_temp = 0; // last temperature level recorded
 	unsigned int min_temp = 0; // calculated minimum temperature based on percentage
-	init_serial("/dev/ttyUSB0");
+	init_serial("/dev/ttyFAN0");
     /* default configuration if /etc/deskpi.conf dose not exist */
 	conf_info[0]=40;
 	conf_info[1]=25;

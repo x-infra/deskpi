@@ -2,12 +2,12 @@
 # via "pip3 install pyserial" in Python3.x or "pip install pyserial" in Python2.x
 # This script will send `power_off` to daughter board, and the daughter board will cut off the power.
 import serial
-import time 
+import time
 
 
-ser = serial.Serial("/dev/ttyUSB0", 9600, timeout=30)
+ser = serial.Serial("/dev/ttyFAN0", 9600, timeout=30)
 
-try: 
+try:
     while True:
         if ser.isOpen():
             ser.write(b'power_off')
@@ -16,4 +16,4 @@ try:
 except KeyboardInterrupt:
     ser.write(b'power_off')
     ser.close()
-    
+

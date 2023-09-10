@@ -1,13 +1,13 @@
 # Before you import the library, you need to install pyserial library.
 # via "pip3 install pyserial" in Python3.x or "pip install pyserial" in Python2.x
 import serial
-import time 
-import subprocess 
+import time
+import subprocess
 
 
-ser = serial.Serial("/dev/ttyUSB0", 9600, timeout=30)
+ser = serial.Serial("/dev/ttyFAN0", 9600, timeout=30)
 
-try: 
+try:
     while True:
         if ser.isOpen():
             cpu_temp = subprocess.getoutput('vcgencmd measure_temp|awk -F\'=\' \'{print $2\'}')
@@ -27,4 +27,4 @@ try:
 except KeyboardInterrupt:
     ser.write(b'pwm_000')
     ser.close()
-    
+

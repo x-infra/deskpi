@@ -10,9 +10,9 @@
 
 int main(void){
 	while(1){
- 		int serial_port = open("/dev/ttyUSB0", O_RDWR);
+ 		int serial_port = open("/dev/ttyFAN0", O_RDWR);
 		if (serial_port < 0){
-			printf("Can not access /dev/ttyUSB0, please check it out.\n");
+			printf("Can not access /dev/ttyFAN0, please check it out.\n");
  			}
 
 	struct termios tty;
@@ -21,9 +21,9 @@ int main(void){
 		printf("serial port can not be accessed\n");
  	}
 
-	tty.c_cflag &= ~PARENB; 
+	tty.c_cflag &= ~PARENB;
 	tty.c_cflag |= PARENB;
-	tty.c_cflag &= ~CSTOPB; 
+	tty.c_cflag &= ~CSTOPB;
 	tty.c_cflag |= CSTOPB;
 
 	tty.c_cflag |= CS5;

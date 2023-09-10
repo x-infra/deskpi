@@ -1,4 +1,8 @@
-# Please check *https://github.com/DeskPi-Team/deskpi/issues/118*
+# This branch contains fixes to deskpi fan driver issues
+
+Please check *https://github.com/DeskPi-Team/deskpi/issues/118* for details.
+
+This branch should include all the necessary fixes and configurations. Follow the install steps below should work directly.
 
 ---
 
